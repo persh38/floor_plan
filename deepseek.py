@@ -81,8 +81,18 @@ for _, row in df.iterrows():
         c.drawCentredString(center_x_pt, center_y_pt - 8, area_text)
 
 # Add a title
+# Example: multiple lines of title
+title_lines = ["Les Crêts Corniers", "Disposition des pieces", "échelle 1 : 100]"]
+title_y = page_height_pts - 100  # start y position
+line_spacing = 14  # space between lines in points
+
 c.setFont("Helvetica", 12)
-c.drawCentredString(page_width_pts / 2, page_height_pts - 30, "Distribution des pièces – échelle 1 : 100")
+for i, line in enumerate(title_lines):
+    y_position = title_y - i * line_spacing
+    c.drawCentredString(page_width_pts / 2, y_position, line)
+
+# c.setFont("Helvetica", 12)
+# c.drawCentredString(page_width_pts / 2, page_height_pts - 100, "Les Crêts Corniers Distribution des pièces – échelle 1 : 100")
 c.save()
 
 print(f"PDF with text annotations saved: {pdf_path}")
